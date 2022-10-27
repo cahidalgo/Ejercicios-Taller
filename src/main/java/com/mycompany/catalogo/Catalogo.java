@@ -9,7 +9,8 @@ public class Catalogo {
     public static void main(String[] args) {
         Scanner in= new Scanner(System.in);
         Cd prod;
-        Stack <Cd> catalogo= new Stack<>();
+        Mp3 prod1;
+        Stack <Producto> catalogo= new Stack<>();
         Stack <Cd> inventario= new Stack<>();
         
         do{
@@ -46,17 +47,36 @@ public class Catalogo {
                                 opcion=in.nextInt();in.nextLine();
                                 System.out.println("Ingrese los datos de los productos:");
                                 do {
-                                    System.out.println("Ingrese el titulo:");
-                                    tit=in.nextLine();
-                                    System.out.println("Ingrese el interprete:");
-                                    it=in.nextLine();
-                                    System.out.println("Ingrese el codigo:");
-                                    cod=in.nextInt(); in.nextLine();
-                                    System.out.println("Ingrese el precio:");
-                                    precio=in.nextInt();in.nextLine();
-                                    prod=new Cd(precio,cod,0,tit,it);
-                                    catalogo.addFirst(prod);
-                                    cont+=1;
+                                    System.out.println("Ingrese si el producto es: 1.MP3 2.CD");
+                                    int y=in.nextInt();in.nextLine();
+                                    switch(y){
+                                        
+                                        case 1 -> {
+                                            System.out.println("Ingrese el titulo:");
+                                            tit=in.nextLine();
+                                            System.out.println("Ingrese el codigo:");
+                                            cod=in.nextInt(); in.nextLine();
+                                            System.out.println("Ingrese el precio:");
+                                            precio=in.nextInt();in.nextLine();
+                                            prod1=new Mp3(precio,cod,0,tit);
+                                            catalogo.addFirst(prod1);
+                                            cont+=1;
+                                }
+                                        
+                                        case 2 -> {
+                                            System.out.println("Ingrese el titulo:");
+                                            tit=in.nextLine();
+                                            System.out.println("Ingrese el interprete:");
+                                            it=in.nextLine();
+                                            System.out.println("Ingrese el codigo:");
+                                            cod=in.nextInt(); in.nextLine();
+                                            System.out.println("Ingrese el precio:");
+                                            precio=in.nextInt();in.nextLine();
+                                            prod=new Cd(precio,cod,0,tit,it);
+                                            catalogo.addFirst(prod);
+                                            cont+=1;
+                                }
+                                    }
                                 } while (cont<opcion);
                             break;
 
@@ -81,8 +101,8 @@ public class Catalogo {
 
                         switch (opcion){
                             case 1:
-                                for(Cd pe:catalogo){
-                                    System.out.println(pe.getTitulo()+ " del autor: "+ pe.getInterprete());
+                                for(Producto pe:catalogo){
+                                    System.out.println(pe.toString());
                                     System.out.println("Ingrese el stock actual:");
                                     opcion=in.nextInt(); in.nextLine();
                                     pe.setCant(opcion);
@@ -90,7 +110,7 @@ public class Catalogo {
                             break;
                             
                             case 2:
-                                for(Cd pe:catalogo){
+                                for(Producto pe:catalogo){
                                     System.out.println(pe.toString());
                                     System.out.println("La disponibilidad es de: "+ pe.getCant()+ " unidades");
                                 }
@@ -98,7 +118,7 @@ public class Catalogo {
                                 System.out.println("Que producto desea comprar:");
                                 p=in.nextLine();
                                 
-                                for(Cd pe:catalogo){
+                                for(Producto pe:catalogo){
                                     if(p.equals(pe.getTitulo())){
                                         System.out.println("Cuantas unidades desea:");
                                         opcion=in.nextInt();in.nextLine();
@@ -115,20 +135,14 @@ public class Catalogo {
                                             pe.setTipoenvio(new Domicilio());
                                         else if(p.equals("tienda"))
                                             pe.setTipoenvio(new Tienda());
+                                        System.out.println("El precio de la venta es: "+pe.getPrecio()*opcion);
                                         
-                                        System.out.println("Confirmacion de pedido: ["+pe.getTitulo()+"] del autor ["+pe.getInterprete()
-                                                +"] con un precio de= "+pe.getPrecio()*opcion);
-                                        System.out.println("Forma de pago: "+ pe.getTipopago().pago());
-                                        System.out.println("Forma de envio: "+ pe.getTipoenvio().envio());
-                                        if (pe.getCant()<2) {
-                                            System.out.println("Es necesario pedir restock");
-                                        }
                                     }
                             }
                             break;
                             
                             case 3:
-                                for(Cd pe:catalogo)
+                                for(Producto pe:catalogo)
                                     if(pe.getCant()<2){
                                         pe.setCant(10);
                                     }
