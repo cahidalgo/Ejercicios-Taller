@@ -1,4 +1,4 @@
-package com.mycompany.catalogo;
+package com.mycompany.interfaz;
 import java.util.Iterator;
 
 /**

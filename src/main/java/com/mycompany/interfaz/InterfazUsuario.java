@@ -1,16 +1,19 @@
-package com.mycompany.catalogo;
+package com.mycompany.interfaz;
 import java.util.Scanner;
 /**
  *
  * @author User
  */
-public class Catalogo {
+public class InterfazUsuario {
 
     public static void main(String[] args) {
         Scanner in= new Scanner(System.in);
         Cd prod;
+        Mp3 mp;
         Stack <Cd> catalogo= new Stack<>();
+        Stack<Mp3> catalogo1=new Stack<>();
         Stack <Cd> inventario= new Stack<>();
+        Stack<Mp3> inventario1=new Stack<>();
         
         do{
             int opcion;
@@ -36,28 +39,55 @@ public class Catalogo {
 
                         switch (opcion){
                             case 1:
-                                String tit;
-                                String it;
-                                int cod;
-                                int precio;
-                                int cont=0;
-
-                                System.out.println("Cuantos productos pondra a la venta:");
+                                System.out.println("Que producto desea registrar:"
+                                        + "\n1. CD"
+                                        + "\n2. Mp3");
                                 opcion=in.nextInt();in.nextLine();
-                                System.out.println("Ingrese los datos de los productos:");
-                                do {
-                                    System.out.println("Ingrese el titulo:");
-                                    tit=in.nextLine();
-                                    System.out.println("Ingrese el interprete:");
-                                    it=in.nextLine();
-                                    System.out.println("Ingrese el codigo:");
-                                    cod=in.nextInt(); in.nextLine();
-                                    System.out.println("Ingrese el precio:");
-                                    precio=in.nextInt();in.nextLine();
-                                    prod=new Cd(precio,cod,0,tit,it);
-                                    catalogo.addFirst(prod);
-                                    cont+=1;
-                                } while (cont<opcion);
+                                switch(opcion){
+                                    case 1:
+                                        String tit;
+                                        String it;
+                                        int cod;
+                                        int precio;
+                                        int cont=0;
+
+                                        System.out.println("Cuantos Cds pondra a la venta:");
+                                        opcion=in.nextInt();in.nextLine();
+                                        System.out.println("Ingrese los datos de los cds: ");
+                                        do {
+                                            System.out.println("Ingrese el titulo:");
+                                            tit=in.nextLine();
+                                            System.out.println("Ingrese el interprete:");
+                                            it=in.nextLine();
+                                            System.out.println("Ingrese el codigo:");
+                                            cod=in.nextInt(); in.nextLine();
+                                            System.out.println("Ingrese el precio:");
+                                            precio=in.nextInt();in.nextLine();
+                                            prod=new Cd(precio,cod,0,tit,it);
+                                            catalogo.addFirst(prod);
+                                            cont+=1;
+                                        } while (cont<opcion);
+                                                break;
+                                        
+                                    case 2:
+                                        int count=0;
+                                        System.out.println("Cuantos MP3 pondra a la venta: ");
+                                        opcion=in.nextInt();in.nextLine();
+                                        System.out.println("Ingrese los datos de los mp3: ");
+                                        do{
+                                            System.out.println("Ingrese la marca:: ");
+                                            tit=in.nextLine();
+                                            System.out.println("Ingrese el precio: ");
+                                            precio=in.nextInt();in.nextLine();
+                                            System.out.println("Ingrese el codigo: ");
+                                            cod=in.nextInt();in.nextLine();
+                                            mp=new Mp3(precio,cod,0,tit);
+                                            catalogo1.addFirst(mp);
+                                        }while(count<opcion);
+                                        
+                                        break;
+                                        
+                                }
                             break;
 
                             case 2:
@@ -86,6 +116,11 @@ public class Catalogo {
                                     System.out.println("Ingrese el stock actual:");
                                     opcion=in.nextInt(); in.nextLine();
                                     pe.setCant(opcion);
+                                }
+                                for(Mp3 me:catalogo1){
+                                    System.out.println("El mp3 con el codigo: "+ me.getCodigo());
+                                    opcion=in.nextInt();in.nextLine();
+                                    me.setCant(opcion);
                                 }
                             break;
                             
