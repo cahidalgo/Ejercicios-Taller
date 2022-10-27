@@ -14,6 +14,8 @@ public abstract class Lote {
     private int antiguedad;
     private int estadoterreno;
     private String region;
+    Siembra SiembraConvencional;
+    Siembra Siembradirecta;
     
     /**
      * @return the estadoterreno
@@ -60,11 +62,10 @@ public abstract class Lote {
         this.antiguedad = antiguedad;
     }
     
-    
-    /*especifica como se realizara la fumigacion dependiendo de las plagas*/
-    
-    public void fumigacion(){
+        public int puntaje(int estadoterreno,int antiguedad){
         
+        int puntaje= estadoterreno+antiguedad;
+        return puntaje;
     }
     
     /*se usa segun el tipo de sembrado que se vaya a realizar*/

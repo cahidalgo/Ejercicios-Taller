@@ -26,9 +26,9 @@ private int costoalquiler;
     }
     
     
-    public int CalcularPorcentage(int terreno,float porcentajealquiler){
-    
-        return 1;    
+
+
+    public LoteAlquilado() {
     }
     
     

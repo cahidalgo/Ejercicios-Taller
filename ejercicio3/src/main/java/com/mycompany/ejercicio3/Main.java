@@ -64,7 +64,7 @@ public class Main {
                 
                 if(puntajetotal<3){
                 
-                    System.out.println("siembra tradicional");
+                   System.out.println("siembra tradicional");
                 }
                 else{
                     System.out.println("siembra directa");
@@ -76,7 +76,43 @@ public class Main {
             
             else if (lote==2){
                 
-                System.out.println("siembra directa");
+                System.out.println("cual es la region del terreno");
+                String region= scanner.next();
+                LoteAlquilado milote=new LoteAlquilado();
+                milote.setRegion(region);
+                
+                System.out.println("cual es el estado del terreno");
+                System.out.println("");
+                System.out.println("1. tratado ");
+                System.out.println("2.sin tratar");
+                int estado= scanner.nextInt();
+                milote.setEstadoterreno(estado);
+                
+                System.out.println("cual es la antiguedad del terreno en años");
+                int antiguedad= scanner.nextInt();
+                int puntaje;
+                if (antiguedad<20){
+                    puntaje=1;
+                }
+                else{
+                    puntaje=2;
+                }
+                milote.setAntiguedad(puntaje);
+                
+                antiguedad=milote.getAntiguedad();
+                int estadoterreno=milote.getEstadoterreno();
+                
+                int puntajetotal=milote.puntaje(estadoterreno, antiguedad);
+                
+                if(puntajetotal<3){
+                
+                    System.out.println("siembra tradicional");
+                }
+                else{
+                    System.out.println("siembra directa");
+                }
+                
+
             
             }
             

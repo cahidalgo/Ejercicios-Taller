@@ -9,18 +9,11 @@ package com.mycompany.ejercicio3;
  *
  * @author pipel
  */
-public class LotePropio extends Lote {
-
-    public LotePropio() {
-    }
+public interface Siembra {
     
-
+    public String PreparadoTierra();
     
-    public int ganancias (int hectareas, int precioxhectarea){
     
-    int ganancia=hectareas*precioxhectarea;
-    return ganancia;
     
-    }
-    
+    public void EliminacionMalesas(Boolean quimicos, Boolean herramienta);
 }
