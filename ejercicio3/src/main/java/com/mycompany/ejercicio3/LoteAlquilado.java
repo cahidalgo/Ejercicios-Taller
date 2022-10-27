@@ -12,4 +12,5 @@ package com.mycompany.ejercicio3;
 public class LoteAlquilado extends Lote{
     
     
+    
 }
