@@ -38,6 +38,7 @@ public class Main {
                 String region= scanner.next();
                 LotePropio milote=new LotePropio();
                 milote.setRegion(region);
+            
                 
                 System.out.println("cual es el estado del terreno");
                 System.out.println("");
@@ -120,6 +121,46 @@ public class Main {
                 System.out.println("opcion incorrecta saliendo del programa");
                 break;
             }
+            int flat=1;
+            while ( flat !=2){
+                for (int i=20;i>0;i--){
+                    
+                    System.out.println("este es el dia"+ i+"antes de la siembra");
+                if (i==15){
+                    System.out.println("se realizara la fumigacion");
+                }
+                else if(i==1){
+                
+                    System.out.println("se debe empezar la siembra");
+                    flat=2;
+                }
+                
+                }
+            
+            }
+            
+            System.out.println("de donde saldra la semilla");
+            System.out.println("");
+            System.out.println("1. compra");
+            System.out.println("2. siembra anterior");
+            int siembra= scanner.nextInt();
+            
+            if (siembra==1){
+                
+            Semilla misemilla= new Semilla();
+            misemilla.setDecompra(1);
+            misemilla.setDerecoleccion(0);
+            
+            
+            
+            }
+            
+            else if(siembra==2){
+            
+            Semilla misemilla= new Semilla();
+            misemilla.setDecompra(0);
+            misemilla.setDerecoleccion(1);
+            }
         }
         
         
@@ -127,8 +168,13 @@ public class Main {
         break;
         }
         
+        
+        
+        
+        
         }
         
+
         System.out.println("gracias por usar nuestro programa vuelva pronto");
     }
     

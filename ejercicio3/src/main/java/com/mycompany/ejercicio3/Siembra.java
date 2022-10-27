@@ -11,7 +11,7 @@ package com.mycompany.ejercicio3;
  */
 public interface Siembra {
     
-    public String PreparadoTierra();
+        public String PreparadoTierra();
     
     
     
