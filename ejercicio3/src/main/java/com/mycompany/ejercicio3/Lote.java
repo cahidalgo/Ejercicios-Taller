@@ -14,6 +14,7 @@ public abstract class Lote {
     private int antiguedad;
     private int estadoterreno;
     private String region;
+    
     /**
      * @return the estadoterreno
      */
